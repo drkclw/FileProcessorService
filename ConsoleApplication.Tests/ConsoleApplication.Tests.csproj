@@ -75,8 +75,13 @@
       <Project>{787c6362-d33c-4422-b344-949429f16697}</Project>
       <Name>ConsoleApplication</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{259dd543-2ac0-4893-856f-78894ca2e069}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <Choose>

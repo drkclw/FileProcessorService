@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Moq;
+using DataAccess;
 
 namespace ConsoleApplication.Tests
 {
@@ -23,7 +24,7 @@ namespace ConsoleApplication.Tests
                 LastName = "Wayne",
                 Gender = "Male",
                 FavoriteColor = "Black",
-                DateOfBirth = "01/01/1985"
+                DateOfBirth = DateTime.Parse("01/01/1985")
             };
 
             var spaceDelimitedRecord = new Record
@@ -32,7 +33,7 @@ namespace ConsoleApplication.Tests
                 LastName = "Prince",
                 Gender = "Female",
                 FavoriteColor = "Blue",
-                DateOfBirth = "01/10/1985"
+                DateOfBirth = DateTime.Parse("01/10/1985")
             };
 
             var pipeDelimitedRecord = new Record
@@ -41,7 +42,7 @@ namespace ConsoleApplication.Tests
                 LastName = "Stark",
                 Gender = "Male",
                 FavoriteColor = "Red",
-                DateOfBirth = "01/02/1985"
+                DateOfBirth = DateTime.Parse("01/02/1985")
             };
 
             records = new List<Record>();
@@ -54,21 +55,21 @@ namespace ConsoleApplication.Tests
         [TestMethod()]
         public void RecordsSortedByGenderAndLastNameTest()
         {            
-            IRecordService _recordService = new RecordService();
+            IRecordService _recordService = new ConsoleRecordService();
             _recordService.OutputRecords("Gender, LastName", records);            
         }
 
         [TestMethod()]
         public void RecordsSortedByBirthDayTest()
         {
-            IRecordService _recordService = new RecordService();
+            IRecordService _recordService = new ConsoleRecordService();
             _recordService.OutputRecords("DateOfBirth", records);
         }
 
         [TestMethod()]
         public void RecordsSortedByLastNameTest()
         {
-            IRecordService _recordService = new RecordService();
+            IRecordService _recordService = new ConsoleRecordService();
             _recordService.OutputRecords("LastName", records, true);
         }
     }

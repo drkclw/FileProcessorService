@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,7 @@ namespace ConsoleApplication
         static void Main(string[] args)
         {
             var container = new UnityContainer();
-            container.RegisterType<IRecordService, RecordService>(new HierarchicalLifetimeManager());
+            container.RegisterType<IRecordService, ConsoleRecordService>(new HierarchicalLifetimeManager());
             var fileProcessor = container.Resolve<IRecordService>();
 
             Run(fileProcessor);                
